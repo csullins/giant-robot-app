@@ -1,14 +1,17 @@
 import "./App.css";
 import Logo from "./assets/GiantRobotLTD_Logo.svg";
+import Arrow from "./assets/White_Arrow.svg";
 
 export default function App() {
   return (
     <div
       className="
         flex 
+        border-2
+        border-green-500
         flex-col
         sm:flex-row
-        h-screen">
+        sm:h-screen">
       <header
         className="
         pl-6
@@ -18,7 +21,7 @@ export default function App() {
         sm:pl-80
       bg-grey">
         <div>
-          <img src={Logo} className="h-26 w-177" alt="giant robot logo" />
+          <img src={Logo} className="h-26 w-177" alt="giant robot logo"/>
           <h1
             className="
               header-title 
@@ -37,15 +40,16 @@ export default function App() {
       <div>
         <form
           className="
-        font-serif
-        flex
-        flex-col
-        pl-6
-        w-376
-        text-16
-        text-grey
-        sm:mt-20
-        mt-8"
+            font-serif
+            flex
+            flex-col
+            mx-auto
+            w-376
+            sm:ml-8
+            text-16
+            text-grey
+            sm:mt-20
+            mt-8"
         >
           <label htmlFor="firstName" className="pb-1">
             FIRST NAME
@@ -93,10 +97,9 @@ export default function App() {
           ></input>
           <button
             type="submit"
-            className="bg-citrus w-376 sm:w-28 mt-12 h-12 rounded-md text-white"
-          >
-            {" "}
-            Next
+            className="bg-citrus w-376 sm:w-28 mt-12 h-12 rounded-md text-white flex items-center justify-center">
+            <p>Next</p> 
+            <img src={Arrow} className="h-2.5 w-2.5 m-2" alt="right-arrow" />
           </button>
         </form>
       </div>
