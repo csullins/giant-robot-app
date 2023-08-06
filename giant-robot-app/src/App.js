@@ -48,8 +48,11 @@ export default function App() {
     }
 
     if (allRequiredFieldsFilled) {
-      let fieldValuesString = "Form values:\n";
+      let fieldValuesString = "User Data:\n";
       for (const input of inputs) {
+        if (input.name === "address2" && !formValues[input.name]) {
+          continue;
+        }
         fieldValuesString += `${input.label}: ${formValues[input.name]}\n`;
       }
       alert(fieldValuesString);
