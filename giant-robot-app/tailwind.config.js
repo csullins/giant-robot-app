@@ -18,9 +18,8 @@ module.exports = {
         'citrus': '#FFAB44',
         'label-grey': '#666666',
         'input-grey': '#F7F7F7',
-        'invalid': '#E70000',
-        'valid': '#OOADEE',
-        'active-border': '#OOADEE',
+        'error': '#E70000',
+        'active-border': 'rgb(0, 173, 238)',
       },
       fontSize: {
         '12': '12px',

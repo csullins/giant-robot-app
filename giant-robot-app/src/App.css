@@ -2,8 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@400;700&display=swap');
 
-body {
-  border-radius: 0.375rem;
-}
+/* body {
+  border-radius: #00ADEE;
+  color:rgb(250, 243, 215);
+} */
