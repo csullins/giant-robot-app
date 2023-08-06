@@ -19,7 +19,7 @@ module.exports = {
         'label-grey': '#666666',
         'input-grey': '#F7F7F7',
         'error': '#E70000',
-        'active-border': 'rgb(0, 173, 238)',
+        'active-border': '#00ADEE',
       },
       fontSize: {
         '12': '12px',
