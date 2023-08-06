@@ -18,17 +18,15 @@ export default function FormInput(props) {
   return (
     <>
       <div className="flex">
-        <label className="pb-1">{label}</label>
-        {showError && <span className="text-red-500 ml-1">REQUIRED</span>}
+        <label className="pb-1 text-12 text-label-grey">{label}</label>
+        {showError && <span className="text-invalid ml-1">REQUIRED</span>}
       </div>
       <input
-        className="
-        bg-gray-100 
-          h-12 
-          border 
-          focus:bg-transparent 
-          rounded-md 
-          mb-6"
+        className={
+          showError
+            ? "bg-input-grey h-12 border border-invalid focus:bg-white rounded-md mb-6"
+            : "bg-input-grey h-12 border border-off-white focus:bg-white focus:border-active-border rounded-md  mb-6"
+        }
         name={name}
         value={value}
         onChange={onChange}

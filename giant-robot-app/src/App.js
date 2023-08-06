@@ -1,8 +1,8 @@
 import "./App.css";
 import { useState } from "react";
-import FormInput from "./FormInput";
 import Logo from "./assets/GiantRobotLTD_Logo.svg";
 import Arrow from "./assets/White_Arrow.svg";
+import FormInput from "./FormInput";
 
 export default function App() {
   const [formValues, setFormValues] = useState({
@@ -46,6 +46,7 @@ export default function App() {
         break;
       }
     }
+
     if (allRequiredFieldsFilled) {
       let fieldValuesString = "Form values:\n";
       for (const input of inputs) {
@@ -54,6 +55,7 @@ export default function App() {
       alert(fieldValuesString);
     } else {
       alert("Please fill in all required fields.");
+      return;
     }
   };
 
@@ -67,50 +69,54 @@ export default function App() {
         flex 
         flex-col
         sm:flex-row
-        sm:h-screen"
+        h-screen
+        w-376
+        sm:w-auto
+        "
     >
-      <header
-        className="
-        pl-6
-        pt-8
-        sm:py-8
-        sm:pr-20
-        sm:pl-80
-      bg-grey"
-      >
-        <div>
+      <div
+      className="
+      flex
+      flex-col
+      py-8
+      px-8
+      sm:ps-32
+      sm:pr-20
+      bg-grey">
+        <header
+          className="
+        sm:h-screen"
+        >
           <img src={Logo} className="h-26 w-177" alt="giant robot logo" />
           <h1
             className="
-              header-title 
+            font-sans
               font-bold 
               text-white 
-              text-32 
+              text-24
+              sm:text-32 
               leading-none 
               pt-8 
               pb-4"
           >
             Welcome
           </h1>
-          <h3 className="text-off-white pb-8">
+          <h3 className="text-off-white text-14 font-serif">
             Please tell us a bit about yourself to get started.
           </h3>
-        </div>
-      </header>
-      <div>
+        </header>
+      </div>
+      <div className="px-6">
         <form
           className="
             font-serif
             flex
             flex-col
-            mx-auto
-            w-376
-            sm:ml-8
             text-xs
-          text-label-grey
+            sm:w-376
+            
             sm:mt-20
-            mt-8"
-        >
+            mt-8">
           {inputs.map((input) => (
             <FormInput
               {...input}
@@ -121,9 +127,18 @@ export default function App() {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="bg-citrus w-376 sm:w-28 mt-12 h-12 rounded-md text-white flex items-center justify-center"
+            className="
+            bg-citrus 
+            sm:px-6 
+            sm:w-28
+             mt-6 
+             h-12 
+             rounded-md  
+             flex 
+             items-center 
+             justify-center"
           >
-            <p>Next</p>
+            <p className="font-sans font-bold text-white text-16">Next</p>
             <img src={Arrow} className="h-2.5 w-2.5 m-2" alt="right-arrow" />
           </button>
         </form>

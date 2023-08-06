@@ -4,3 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@700&display=swap');
 
+body {
+  border-radius: 0.375rem;
+}
