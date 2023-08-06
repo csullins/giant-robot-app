@@ -6,10 +6,10 @@ import Arrow from "./assets/White_Arrow.svg";
 
 export default function App() {
   const [formValues, setFormValues] = useState({
-    firstName: '',
-    lastName: '',
-    address: '',
-    address2: ''
+    firstName: "",
+    lastName: "",
+    address: "",
+    address2: "",
   });
 
   const inputs = [
@@ -32,7 +32,7 @@ export default function App() {
       name: "address2",
       label: "ADDRESS 2 (OPTIONAL)",
       required: false,
-    }
+    },
   ];
 
   const handleSubmit = (e) => {
@@ -52,12 +52,11 @@ export default function App() {
         fieldValuesString += `${input.label}: ${formValues[input.name]}\n`;
       }
       alert(fieldValuesString);
-    }  else {
+    } else {
       alert("Please fill in all required fields.");
-
     }
   };
-    
+
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
@@ -68,7 +67,8 @@ export default function App() {
         flex 
         flex-col
         sm:flex-row
-        sm:h-screen">
+        sm:h-screen"
+    >
       <header
         className="
         pl-6
@@ -76,9 +76,10 @@ export default function App() {
         sm:py-8
         sm:pr-20
         sm:pl-80
-      bg-grey">
+      bg-grey"
+      >
         <div>
-          <img src={Logo} className="h-26 w-177" alt="giant robot logo"/>
+          <img src={Logo} className="h-26 w-177" alt="giant robot logo" />
           <h1
             className="
               header-title 
@@ -87,7 +88,9 @@ export default function App() {
               text-32 
               leading-none 
               pt-8 
-              pb-4">Welcome
+              pb-4"
+          >
+            Welcome
           </h1>
           <h3 className="text-off-white pb-8">
             Please tell us a bit about yourself to get started.
@@ -107,19 +110,21 @@ export default function App() {
           text-label-grey
             sm:mt-20
             mt-8"
-            onSubmit={handleSubmit}
         >
-        {inputs.map((input) => (
-          <FormInput
-            {...input}
-            value={formValues[input.name]}
-            onChange={handleChange}
-          />
-        ))}
+          {inputs.map((input) => (
+            <FormInput
+              {...input}
+              value={formValues[input.name]}
+              onChange={handleChange}
+            />
+          ))}
           <button
-            className="bg-citrus w-376 sm:w-28 mt-12 h-12 rounded-md text-white flex items-center justify-center">
-            <p>Next</p> 
-            <img src={Arrow} className="h-2.5 w-2.5 m-2" alt="right-arrow"/>
+            type="submit"
+            onClick={handleSubmit}
+            className="bg-citrus w-376 sm:w-28 mt-12 h-12 rounded-md text-white flex items-center justify-center"
+          >
+            <p>Next</p>
+            <img src={Arrow} className="h-2.5 w-2.5 m-2" alt="right-arrow" />
           </button>
         </form>
       </div>

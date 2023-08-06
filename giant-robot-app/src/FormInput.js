@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function FormInput (props) {
+export default function FormInput(props) {
   const [focused, setFocused] = useState(true);
 
   const { label, onChange, name, value, required } = props;
@@ -19,9 +19,9 @@ export default function FormInput (props) {
     <>
       <div className="flex">
         <label className="pb-1">{label}</label>
-      {showError && <span className="text-red-500 ml-1">REQUIRED</span>}
+        {showError && <span className="text-red-500 ml-1">REQUIRED</span>}
       </div>
-       <input
+      <input
         className="
         bg-gray-100 
           h-12 
@@ -37,5 +37,4 @@ export default function FormInput (props) {
       />
     </>
   );
-};
-
+}
