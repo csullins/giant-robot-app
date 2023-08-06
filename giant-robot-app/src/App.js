@@ -56,6 +56,7 @@ export default function App() {
         fieldValuesString += `${input.label}: ${formValues[input.name]}\n`;
       }
       alert(fieldValuesString);
+      window.location.reload();
     } else {
       alert("Please fill in all required fields.");
       return;
