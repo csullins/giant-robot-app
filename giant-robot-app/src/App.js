@@ -1,14 +1,71 @@
 import "./App.css";
+import { useState } from "react";
+import FormInput from "./FormInput";
 import Logo from "./assets/GiantRobotLTD_Logo.svg";
 import Arrow from "./assets/White_Arrow.svg";
 
 export default function App() {
+  const [formValues, setFormValues] = useState({
+    firstName: '',
+    lastName: '',
+    address: '',
+    address2: ''
+  });
+
+  const inputs = [
+    {
+      name: "firstName",
+      label: "FIRST NAME",
+      required: true,
+    },
+    {
+      name: "lastName",
+      label: "LAST NAME",
+      required: true,
+    },
+    {
+      name: "address",
+      label: "ADDRESS",
+      required: true,
+    },
+    {
+      name: "address2",
+      label: "ADDRESS 2 (OPTIONAL)",
+      required: false,
+    }
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let allRequiredFieldsFilled = true;
+
+    for (const input of inputs) {
+      if (input.required && !formValues[input.name]) {
+        allRequiredFieldsFilled = false;
+        break;
+      }
+    }
+    if (allRequiredFieldsFilled) {
+      let fieldValuesString = "Form values:\n";
+      for (const input of inputs) {
+        fieldValuesString += `${input.label}: ${formValues[input.name]}\n`;
+      }
+      alert(fieldValuesString);
+    }  else {
+      alert("Please fill in all required fields.");
+
+    }
+  };
+    
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
   return (
     <div
       className="
         flex 
-        border-2
-        border-green-500
         flex-col
         sm:flex-row
         sm:h-screen">
@@ -46,60 +103,23 @@ export default function App() {
             mx-auto
             w-376
             sm:ml-8
-            text-16
-            text-grey
+            text-xs
+          text-label-grey
             sm:mt-20
             mt-8"
+            onSubmit={handleSubmit}
         >
-          <label htmlFor="firstName" className="pb-1">
-            FIRST NAME
-          </label>
-          <input 
-          className="
-        bg-gray-100 
-          h-12 
-          border 
-          focus:bg-transparent 
-          rounded-md 
-          mb-6">
-          </input>
-
-          <label htmlFor="firstName" className="pb-1">
-            FIRST NAME
-          </label>
-          <input
-            id="firstName"
-            className="bg-gray-100 h-12 border focus:bg-transparent rounded-md mb-6"
-          ></input>
-
-          <label htmlFor="lastName" className="pb-1">
-            LAST NAME
-          </label>
-          <input
-            id="lastName"
-            className="bg-gray-100 h-12 border focus:bg-transparent rounded-md mb-6"
-          ></input>
-
-          <label htmlFor="address" className="pb-1">
-            ADDRESS
-          </label>
-          <input
-            id="address"
-            className="bg-gray-100 h-12 border focus:bg-transparent rounded-md mb-6"
-          ></input>
-
-          <label htmlFor="address2" className="pb-1">
-            ADDRESS 2 (OPTIONAL)
-          </label>
-          <input
-            id="address2"
-            className="bg-gray-100 h-12 border focus:bg-transparent rounded-md mb-6"
-          ></input>
+        {inputs.map((input) => (
+          <FormInput
+            {...input}
+            value={formValues[input.name]}
+            onChange={handleChange}
+          />
+        ))}
           <button
-            type="submit"
             className="bg-citrus w-376 sm:w-28 mt-12 h-12 rounded-md text-white flex items-center justify-center">
             <p>Next</p> 
-            <img src={Arrow} className="h-2.5 w-2.5 m-2" alt="right-arrow" />
+            <img src={Arrow} className="h-2.5 w-2.5 m-2" alt="right-arrow"/>
           </button>
         </form>
       </div>

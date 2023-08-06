@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js}"],
-  theme: {
+ theme: {
     extend: {
       height: {
         '26': '26px'
@@ -13,7 +13,8 @@ module.exports = {
       colors: {
         'grey': '#585858',
         'off-white': '#EAEAEA',
-        'citrus': '#FFAB44'
+        'citrus': '#FFAB44',
+        'label-grey': '#666666'
       },
       fontSize: {
         '16': '16px',
