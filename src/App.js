@@ -73,7 +73,7 @@ export default function App() {
         flex 
         flex-col
         sm:flex-row
-        h-screen
+        min-h-screen
         bg-grey
         sm:w-screen
         sm:justify-center
