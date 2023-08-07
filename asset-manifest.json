@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/giant-robot-app/static/css/main.99cecce6.css",
-    "main.js": "/giant-robot-app/static/js/main.7237a5ae.js",
+    "main.css": "/giant-robot-app/static/css/main.85d5e40c.css",
+    "main.js": "/giant-robot-app/static/js/main.b9ea06d3.js",
     "static/js/787.e5bef159.chunk.js": "/giant-robot-app/static/js/787.e5bef159.chunk.js",
     "static/media/GiantRobotLTD_Logo.svg": "/giant-robot-app/static/media/GiantRobotLTD_Logo.b0b1762a51f8b1b9aeeb01d5c96bc6be.svg",
     "static/media/White_Arrow.svg": "/giant-robot-app/static/media/White_Arrow.b1585c15d9807d12e7db865137e8c975.svg",
     "index.html": "/giant-robot-app/index.html",
-    "main.99cecce6.css.map": "/giant-robot-app/static/css/main.99cecce6.css.map",
-    "main.7237a5ae.js.map": "/giant-robot-app/static/js/main.7237a5ae.js.map",
+    "main.85d5e40c.css.map": "/giant-robot-app/static/css/main.85d5e40c.css.map",
+    "main.b9ea06d3.js.map": "/giant-robot-app/static/js/main.b9ea06d3.js.map",
     "787.e5bef159.chunk.js.map": "/giant-robot-app/static/js/787.e5bef159.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.99cecce6.css",
-    "static/js/main.7237a5ae.js"
+    "static/css/main.85d5e40c.css",
+    "static/js/main.b9ea06d3.js"
   ]
 }
