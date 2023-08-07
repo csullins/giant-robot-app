@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function FormInput(props) {
   const [focused, setFocused] = useState(true);
 
-  const { label, onChange, name, value, required } = props;
+  const { label, name, value, required, onChange } = props;
 
   const handleFocus = (e) => {
     setFocused(true);
@@ -25,8 +25,7 @@ export default function FormInput(props) {
         className={
           showError
             ? "h-12 border border-error bg-white rounded-md mb-6 text-label-grey font-sans text-14 pl-4 outline-none"
-          : "bg-input-grey h-12 border focus:bg-white focus:border-active-border rounded-md  mb-6 text-label-grey font-sans text-14 pl-4 outline-none"
-
+            : "bg-input-grey h-12 border focus:bg-white focus:border-active-border rounded-md  mb-6 text-label-grey font-sans text-14 pl-4 outline-none"
         }
         name={name}
         value={value}

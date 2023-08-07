@@ -79,14 +79,15 @@ export default function App() {
         "
     >
       <div
-      className="
+        className="
       flex
       flex-col
       py-8
       px-8
       sm:ps-32
       sm:pr-20
-      bg-grey">
+      bg-grey"
+      >
         <header
           className="
         sm:h-screen"
@@ -118,9 +119,9 @@ export default function App() {
             flex-col
             text-xs
             sm:w-376
-            
             sm:mt-20
-            mt-8">
+            mt-8"
+        >
           {inputs.map((input) => (
             <FormInput
               {...input}
