@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Logo from "./assets/GiantRobotLTD_Logo.svg";
 import Arrow from "./assets/White_Arrow.svg";
-import FormInput from "./FormInput";
+import FormInput from "./components/FormInput";
 
 export default function App() {
   const [formValues, setFormValues] = useState({
@@ -74,8 +74,9 @@ export default function App() {
         flex-col
         sm:flex-row
         h-screen
-        w-376
-        sm:w-auto
+        bg-grey
+        sm:w-screen
+        sm:justify-center
         "
     >
       <div
@@ -84,13 +85,17 @@ export default function App() {
       flex-col
       py-8
       px-8
-      sm:ps-32
+      sm:w-full
       sm:pr-20
-      bg-grey"
+     "
       >
         <header
           className="
-        sm:h-screen"
+        flex
+        flex-col
+        sm:ml-auto
+        sm:h-screen
+        sm:w-455"
         >
           <img src={Logo} className="h-26 w-177" alt="giant robot logo" />
           <h1
@@ -111,13 +116,14 @@ export default function App() {
           </h3>
         </header>
       </div>
-      <div className="px-6">
+      <div className="px-6 bg-white sm:w-full">
         <form
           className="
             font-serif
             flex
             flex-col
             text-xs
+            h-screen
             sm:w-376
             sm:mt-20
             mt-8"
