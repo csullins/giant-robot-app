@@ -8,6 +8,7 @@ export default function App() {
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
+    phone: "",
     address: "",
     address2: "",
   });
@@ -22,6 +23,11 @@ export default function App() {
       name: "lastName",
       label: "LAST NAME",
       required: true,
+    },
+    {
+      name: "phone",
+      label:"PHONE",
+      required: false,
     },
     {
       name: "address",
@@ -64,8 +70,27 @@ export default function App() {
   };
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
-  };
+    if (e.target.name === "phone") {
+  
+      let rawValue = e.target.value;
+
+      let formattedValue = rawValue.replace(/[^0-9]/g, "")
+
+      if (formattedValue.length > 10) {
+        formattedValue = formattedValue.slice(0, 10)
+      }
+      
+      if (formattedValue.length >= 3 && formattedValue.length <= 6) {
+        formattedValue = `(${formattedValue.slice(0, 3)}) ${formattedValue.slice(3)}`;
+      } else if (formattedValue.length >= 7) {
+        formattedValue = `(${formattedValue.slice(0, 3)}) ${formattedValue.slice(3, 6)}-${formattedValue.slice(6)}`;
+      }
+  
+      setFormValues({ ...formValues, [e.target.name]: formattedValue });
+    } else {
+      setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    } 
+  }
 
   return (
     <div
@@ -135,7 +160,12 @@ export default function App() {
               onChange={handleChange}
             />
           ))}
-          <button
+
+
+  
+
+
+           <button
             type="submit"
             onClick={handleSubmit}
             className="

@@ -1,46 +1,22 @@
 const express = require("express");
-const { MongoClient, ObjectId } = require("mongodb");
+const db = require("./config/connection");
+
+const { User } = require("./models");
+const { ObjectId } = require("mongodb");
 
 const app = express();
-const port = 3001;
+const port = process.env.port || 3001;
 
-const connectionStringURI = `mongodb://127.0.0.1:27017`;
-
-const client = new MongoClient(connectionStringURI);
-
-let db;
-
-const dbName = "giant-robot-db";
-
-client
-  .connect()
-  .then(() => {
-    console.log("Connected successfully to MongoDB");
-    db = client.db(dbName);
-
-    app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Mongo connection error: ", err.message);
-  });
-
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.post("/create", (req, res) => {
-  db.collection("users")
-    .insertOne({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      address: req.body.address,
-      address2: req.body.address2,
-    })
-    .then((results) => res.json(results))
-    .catch((err) => {
-      if (err) throw err;
-    });
+db.once("open", () => {
+  app.listen(port, () => {
+    console.log(`API server running on port ${port}!`);
+  });
 });
+
+const handleError = (err) => console.error(err);
 
 app.get("/read", (req, res) => {
   db.collection("users")
@@ -52,15 +28,51 @@ app.get("/read", (req, res) => {
     });
 });
 
+app.post("/create", async (req, res) => {
+  const newUser = new User({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    address: req.body.address,
+    address2: req.body.address2,
+  });
+  if (newUser.firstName && newUser.lastName && newUser.address) {
+    await newUser.save();
+    if (newUser) {
+      res.status(201).json(newUser);
+    } else {
+      (err) => {
+        if (err) throw err;
+      };
+    }
+  } else {
+    res.send("Please complete all required fields.")
+    return;
+  }
+});
+
+app.put("/update/:id", async (req, res) => {
+  const query = { _id: new ObjectId(req.params.id) };
+  const updates = {
+    $set: {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      address: req.body.address,
+      address2: req.body.address2,
+    },
+  };
+
+  let collection = await db.collection("users");
+  let result = await collection.updateOne(query, updates);
+
+  res.send(result).status(200);
+});
 
 app.delete("/delete", (req, res) => {
-  // To delete a document, we need to convert the string id in body to an ObjectId
+  // To delete a document, convert the string id in body to an ObjectId
   const userId = new ObjectId(req.body.id);
 
   db.collection("users")
-    .deleteOne(
-      { _id: userId }
-    )
+    .deleteOne({ _id: userId })
     .then((results) => {
       console.log(results);
       res.send(
